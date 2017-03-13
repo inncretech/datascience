@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[19]:
+# In[118]:
 
 import os
 import time
@@ -12,6 +12,8 @@ from __future__ import division
 
 from sklearn import svm
 from sklearn import metrics
+from sklearn.decomposition import PCA
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import validation_curve
@@ -22,10 +24,14 @@ from sklearn.neighbors import KNeighborsClassifier
 import seaborn as sns
 sns.set(style="white", context="talk")
 
+from sklearn.tree import export_graphviz
+from IPython.display import Image
+import pydotplus
+
 print "Done!"
 
 
-# In[23]:
+# In[41]:
 
 def classify(grid, X_train, y_train, X_test, y_test):
     results = dict()
@@ -48,6 +54,7 @@ def classify(grid, X_train, y_train, X_test, y_test):
     results['matrix'] = metrics.confusion_matrix(y_test, grid_test)
     
     results['grid'] = grid
+    results['grid_test'] = grid_test
     
     return(results)
 
@@ -150,9 +157,9 @@ ax = plot_feature_importances(feature_importances)
 sns.plt.show()
 
 
-# In[84]:
+# In[131]:
 
-#Random Forests classification using only the top features
+#Filtering out only the top features 
 top_features = feature_importances[:5]['feature'].tolist() + ['left']
 new_df = df[top_features]
 
@@ -162,6 +169,10 @@ y_train = train.ix[:, 'left']
 X_test = test.ix[:, new_df.columns.difference(['left'])]
 y_test = test.ix[:, ['left']]
 
+
+# In[130]:
+
+#Random Forests classification using only the top features
 n = range(1, 51)
 param_grid = dict(n_estimators=n)
 random_forests = RandomForestClassifier(random_state=5)
@@ -175,7 +186,7 @@ sns.plt.show()
 
 # In[16]:
 
-#Random Forests Validation Curve
+#Random Forests Validation Curve 
 
 random_forests_classifier = RandomForestClassifier(random_state=5)
 n_estimators = range(1, 51)
@@ -234,7 +245,7 @@ results = classify(grid, X_train, y_train, X_test, y_test)
 print "Done!"
 
 
-# In[15]:
+# In[132]:
 
 #SVM Validation Curve
 support_vector_classifier = svm.SVC(random_state=5, kernel="rbf")
@@ -249,7 +260,7 @@ plt = plot_validation_curve(support_vector_classifier, X_train, y_train, items)
 plt.show()
 
 
-# In[25]:
+# In[133]:
 
 #SVM Learning Curve
 
@@ -295,7 +306,7 @@ results = classify(grid, X_train, y_train, X_test, y_test)
 print "Done!"
 
 
-# In[20]:
+# In[134]:
 
 #KNN Validation curve
 
@@ -311,7 +322,7 @@ plt = plot_validation_curve(knn_classifier, X_train, y_train, items)
 plt.show()
 
 
-# In[26]:
+# In[135]:
 
 #KNN Learning curve
 
@@ -345,52 +356,20 @@ plt.show()
 
 
 
-# In[ ]:
+# In[137]:
 
-from sklearn.datasets import make_blobs
+#Decision Tree Classifier using only the top features
 
+max_depth = range(10, 31)
+param_grid = dict(max_depth=max_depth)
+decision_tree_classifier = DecisionTreeClassifier(random_state=5)
+grid = GridSearchCV(decision_tree_classifier, param_grid, cv=10, scoring='accuracy', n_jobs=-1)
+results = classify(grid, X_train, y_train, X_test, y_test)
 
-X, y = make_blobs(n_samples=300, centers=4, random_state=2, cluster_std=1.0)
-plt.scatter(X[:,0], X[:,1], c=y, s=50, cmap="rainbow")
-plt.show()
+my_tree = results['grid'].best_estimator_
+dot_data = export_graphviz(my_tree, out_file=None, feature_names=X_test.columns, filled=True, rounded=True)
+graph = pydotplus.graph_from_dot_data(dot_data)
 
-
-# In[106]:
-
-from sklearn.tree import DecisionTreeClassifier
-tree = DecisionTreeClassifier().fit(X,y)
-
-
-# In[113]:
-
-def visualize_classifier(model, X, y, ax=None, cmap="rainbow"):
-    ax = ax or plt.gca()
-    
-    ax.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap=cmap, clim=(y.min(), y.max()), zorder=3)
-    
-    ax.axis('tight')
-    ax.axis('off')
-    
-    xlim=ax.get_xlim()
-    ylim=ax.get_ylim()
-    
-    model.fit(X, y)
-    xx, yy = np.meshgrid(np.linspace(*xlim, num=200), np.linspace(*ylim, num=200))
-    Z = model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
-    
-    n_classes = len(np.unique(y))
-    contours = ax.contourf(xx, yy, Z, alpha=0.3,
-                           levels=np.arange(n_classes + 1) - 0.5,
-                           cmap=cmap, clim=(y.min(), y.max()),
-                           zorder=1)
-    
-    ax.set(xlim=xlim, ylim=ylim)
-    
-    return ax
-
-
-# In[115]:
-
-ax = visualize_classifier(DecisionTreeClassifier(), X, y)
-plt.show()
+graph.write_pdf("/users/nandu/Desktop/tree.pdf")
+Image(graph.create_png())
 
