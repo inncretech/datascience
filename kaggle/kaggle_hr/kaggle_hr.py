@@ -1,3 +1,8 @@
+
+# coding: utf-8
+
+# In[19]:
+
 import os
 import time
 import numpy as np
@@ -7,8 +12,8 @@ from __future__ import division
 
 from sklearn import svm
 from sklearn import metrics
-from sklearn import cross_validation
-from sklearn.grid_search import GridSearchCV
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.model_selection import validation_curve
 from sklearn.model_selection import learning_curve
 from sklearn.ensemble import RandomForestClassifier
@@ -20,7 +25,7 @@ sns.set(style="white", context="talk")
 print "Done!"
 
 
-# In[2]:
+# In[23]:
 
 def classify(grid, X_train, y_train, X_test, y_test):
     results = dict()
@@ -59,8 +64,53 @@ def plot_feature_importances(feature_importances):
     ax.set(xlabel = 'Importance', ylabel='Feature')
     return(ax)
 
+def plot_validation_curve(model, X, y, items):
+    train_scores, test_scores = validation_curve(model,
+                                                 X,
+                                                 y,
+                                                 param_name=items['param_name'],
+                                                 param_range=items['param_range'],
+                                                 cv=10, 
+                                                 scoring=items['scoring'],
+                                                 n_jobs=-1)
+    
+    train_score_means = np.mean(train_scores, axis=1)
+    test_score_means = np.mean(test_scores, axis=1)
 
-# In[82]:
+    plt.title(items['title'])
+    plt.xlabel(items['param_name'])
+    plt.ylabel(items['scoring'])
+    plt.ylim(0.0, 1.0)
+    plt.plot(items['param_range'], train_score_means, color="darkorange", label="Training Score")
+    plt.plot(items['param_range'], test_score_means, color="navy", label="Testing Score")
+    plt.legend(loc="best")
+    
+    return(plt)
+
+
+def plot_learning_curve(model, X, y, items):
+    train_sizes_abs, train_scores, test_scores = learning_curve(model,
+                                                                X,
+                                                                y,
+                                                                train_sizes=items['train_sizes'],
+                                                                cv=items['cv'],
+                                                                n_jobs=-1)
+    
+    train_score_means = np.mean(train_scores, axis=1)
+    test_score_means = np.mean(test_scores, axis=1)
+
+    plt.title(items['title'])
+    plt.xlabel('train_sizes')
+    plt.ylabel(items['scoring'])
+    plt.ylim(0.0, 1.0)
+    plt.plot(train_sizes_abs, train_score_means, color="darkorange", label="Training Score")
+    plt.plot(train_sizes_abs, test_score_means, color="navy", label="Testing Score")
+    plt.legend(loc="best")
+    
+    return(plt)
+
+
+# In[5]:
 
 #Reading in the data
 df = pd.read_csv("/Users/nandu/desktop/WORK/kaggle/HR_comma_sep.csv").rename(columns={"sales":"department"})
@@ -72,14 +122,14 @@ df.drop(['salary', 'department'], axis=1, inplace=True)
 df = pd.concat([df, salary, department], axis=1)
 
 #Splitting the dataset into two parts, train set and test set, using stratified sampling
-train, test = cross_validation.train_test_split(df, test_size = 0.3, random_state = 5, stratify = df['left'])
+train, test = train_test_split(df, test_size = 0.3, random_state = 5, stratify = df['left'])
 X_train = train.ix[:, df.columns.difference(['left'])]
 y_train = train.ix[:, 'left']
 X_test = test.ix[:, df.columns.difference(['left'])]
 y_test = test.ix[:, ['left']]
 
 
-# In[83]:
+# In[6]:
 
 #Random Forests classification
 n = range(1, 51)
@@ -106,7 +156,7 @@ sns.plt.show()
 top_features = feature_importances[:5]['feature'].tolist() + ['left']
 new_df = df[top_features]
 
-train, test = cross_validation.train_test_split(new_df, test_size = 0.3, random_state = 5, stratify = new_df['left'])
+train, test = train_test_split(new_df, test_size = 0.3, random_state = 5, stratify = new_df['left'])
 X_train = train.ix[:, new_df.columns.difference(['left'])]
 y_train = train.ix[:, 'left']
 X_test = test.ix[:, new_df.columns.difference(['left'])]
@@ -121,6 +171,48 @@ results = classify(grid, X_train, y_train, X_test, y_test)
 feature_importances = get_feature_importances(results['grid'], X_test)
 ax = plot_feature_importances(feature_importances)
 sns.plt.show()
+
+
+# In[16]:
+
+#Random Forests Validation Curve
+
+random_forests_classifier = RandomForestClassifier(random_state=5)
+n_estimators = range(1, 51)
+
+items = {'title':'Random Forests Validation Curve',
+         'param_range':n_estimators,
+         'param_name':'n_estimators',
+         'scoring':'f1'}
+
+plt = plot_validation_curve(random_forests_classifier, X_train, y_train, items)
+plt.show()
+
+
+# In[24]:
+
+#Random Forests Learning Curve
+
+random_forests_classifier = RandomForestClassifier(random_state=5, n_estimators=10)
+train_sizes = np.linspace(.05, 1.0, 10)
+
+items = {'title':'Random Forests Learning Curve',
+         'train_sizes':train_sizes,
+         'cv':10,
+         'scoring':'accuracy'}
+
+plt = plot_learning_curve(random_forests_classifier, X_train, y_train, items)
+plt.show()
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 
 
 # In[ ]:
@@ -142,31 +234,50 @@ results = classify(grid, X_train, y_train, X_test, y_test)
 print "Done!"
 
 
-# In[9]:
+# In[15]:
 
-#SVM validation curve
+#SVM Validation Curve
 support_vector_classifier = svm.SVC(random_state=5, kernel="rbf")
 gamma = np.logspace(-6, -1, 5)
-train_scores, test_scores = validation_curve(support_vector_classifier, 
-                                             X_train, 
-                                             y_train, 
-                                             param_name="gamma",
-                                             param_range=gamma,
-                                             cv = 10)
 
-train_score_means = np.mean(train_scores, axis=1)
-test_score_means = np.mean(test_scores, axis=1)
+items = {'title':'SVM Validation Curve',
+         'param_range':gamma,
+         'param_name':'gamma',
+         'scoring':'accuracy'}
 
-plt.title("Validation curve with SVM (rbf kernel)")
-plt.xlabel("Gamma")
-plt.ylabel("Accuracy Score")
-plt.ylim(0.0, 1.0)
-plt.semilogx(gamma, train_score_means, label="Training score", color="darkorange", lw = 2)
-plt.semilogx(gamma, test_score_means, label="Cross Validation score", color="navy", lw = 2)
-plt.legend(loc="best")
+plt = plot_validation_curve(support_vector_classifier, X_train, y_train, items)
 plt.show()
 
-print "Done!"
+
+# In[25]:
+
+#SVM Learning Curve
+
+support_vector_classifier = svm.SVC(random_state=5, kernel="rbf")
+train_sizes = np.linspace(.05, 1.0, 10)
+
+items = {'title':'SVM Learning Curve',
+         'train_sizes':train_sizes,
+         'cv':10,
+         'scoring':'accuracy'}
+
+plt = plot_learning_curve(support_vector_classifier, X_train, y_train, items)
+plt.show()
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 
 
 # In[207]:
@@ -184,60 +295,54 @@ results = classify(grid, X_train, y_train, X_test, y_test)
 print "Done!"
 
 
-# In[15]:
+# In[20]:
 
 #KNN Validation curve
 
 knn_classifier = KNeighborsClassifier()
-n_neighbors = range(1, 101)
+n_neighbors = range(1, 50)
 
-train_scores, test_scores = validation_curve(knn_classifier, 
-                                             X_train, 
-                                             y_train, 
-                                             param_name="n_neighbors",
-                                             param_range=n_neighbors,
-                                             cv=10)
+items = {'title':'KNN Validation Curve',
+         'param_range':n_neighbors,
+         'param_name':'n_neighbors',
+         'scoring':'accuracy'}
 
-train_score_means = np.mean(train_scores, axis=1)
-test_score_means = np.mean(test_scores, axis=1)
-
-plt.title("KNN Validation curve ")
-plt.xlabel("Number of neighbors")
-plt.ylabel("Accuracy score")
-plt.ylim(0.0, 1.0)
-plt.plot(n_neighbors, train_score_means, color="darkorange", label="Training Score")
-plt.plot(n_neighbors, test_score_means, color="navy", label="Testing Score")
-plt.legend(loc="best")
+plt = plot_validation_curve(knn_classifier, X_train, y_train, items)
 plt.show()
 
 
-# In[80]:
+# In[26]:
 
 #KNN Learning curve
 
 #train_sizes = [np.round(percent*X_train.shape[0]).astype(int) for percent in np.arange(0.1, 1.1, 0.1)]
 #train_sizes = [percent for percent in np.arange(0.1, 1.1, 0.1)]
 
-#knn_classifier = KNeighborsClassifier(n_neighbors=1)
+knn_classifier = KNeighborsClassifier(n_neighbors=2)
+train_sizes = np.linspace(.05, 1.0, 10)
 
-support_vector_classifier = svm.SVC(random_state=5, kernel="rbf")
-train_sizes_abs, train_scores, test_scores = learning_curve(support_vector_classifier, 
-                                                            X_train, 
-                                                            y_train, 
-                                                            train_sizes=np.linspace(.05, 1.0, 10), 
-                                                            cv=10)
+items = {'title':'KNN Learning Curve',
+         'train_sizes':train_sizes,
+         'cv':10,
+         'scoring':'accuracy'}
 
-train_scores_means = np.mean(train_scores, axis=1)
-test_scores_means = np.mean(test_scores, axis=1)
-
-plt.title("KNN Learning curve ")
-plt.xlabel("Training set size")
-plt.ylabel("Accuracy score")
-plt.ylim(0.0, 1.0)
-plt.plot(train_sizes_abs, train_scores_means, color="darkorange", label="Training Score")
-plt.plot(train_sizes_abs, test_scores_means, color="navy", label="Testing Score")
-plt.legend(loc="best")
+plt = plot_learning_curve(knn_classifier, X_train, y_train, items)
 plt.show()
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 
 
 # In[ ]:
