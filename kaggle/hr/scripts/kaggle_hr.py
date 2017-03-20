@@ -602,7 +602,24 @@ graph.write_pdf("/users/nandu/Desktop/tree.pdf")
 Image(graph.create_png())
 
 
-# In[ ]:
+# In[187]:
 
+#Lets visualise the ROC curves of all our models together to find out which one performed the best.
 
+colors = ['cyan', 'indigo','blue', 'darkorange']
+titles = ["Random Forests", "Support Vector Machines", "K Nearest Neighbors", "Decision Trees"]
+results = [results1, results2, results3, results4]
+models = zip(colors, results, titles)
+
+for model in models:
+    false_positive_rate, true_positive_rate, thresholds = metrics.roc_curve(y_test, model[1]['grid_test'])
+    roc_auc = metrics.auc(false_positive_rate, true_positive_rate)
+    plt.plot(false_positive_rate, true_positive_rate, model[0], label=model[2]+'/AUC = %0.2f'% roc_auc)
+
+plt.plot([0,1],[0,1],'r--')
+plt.title("Receiver Operating Characteristic")
+plt.legend(loc='lower right')
+plt.ylabel('True Positive Rate')
+plt.xlabel('False Positive Rate')
+plt.show()
 
