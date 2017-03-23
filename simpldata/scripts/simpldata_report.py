@@ -1,12 +1,12 @@
 
 # coding: utf-8
 
-# In[4]:
+# In[14]:
 
-get_ipython().run_cell_magic(u'HTML', u'', u"<h1>1. Abstract</h1>\n<h3>\n<p>In this report, we'll be exploring app interaction data of a popular food delivery e-commerce platform and using it to answer some business questions.</p>\n</h3>")
+get_ipython().run_cell_magic(u'HTML', u'', u"<h1>1. Abstract</h1>\n<h3>\n<p>In this report, we'll be exploring a dataset consisting of app interaction data from a popular online food delivery platform and using it to answer some business questions.</p>\n</h3>")
 
 
-# In[31]:
+# In[15]:
 
 import sys
 import time
@@ -15,7 +15,6 @@ import pylab as P
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import networkx as nx
 import matplotlib.pyplot as plt
 from __future__ import division
 
@@ -32,17 +31,16 @@ warnings.filterwarnings("ignore")
 # In[5]:
 
 #reading in all of the event data
-data = pd.read_csv("/Users/nandu/desktop/WORK/SIMPLDATA/test/data.csv")[cols].sort_values(by = ['id', 'timestamp'])
+data = pd.read_csv("/data.csv")[cols].sort_values(by = ['id', 'timestamp'])
 
 #reading in all of 'Screen Visited' events' data
-svdata = pd.read_csv("/Users/nandu/desktop/WORK/SIMPLDATA/test/svdata.csv")[sv_cols].sort_values(by = ['id', 'timestamp'])
+svdata = pd.read_csv("/svdata.csv")[sv_cols].sort_values(by = ['id', 'timestamp'])
 svdata = svdata.loc[svdata['screenname'].notnull()]
 
 
 # In[8]:
 
 #Lets first see what our data looks like.
-
 print data.head()
 print "\n"
 print svdata.head()
@@ -69,9 +67,9 @@ print dict(data[["id", "platform"]].drop_duplicates().groupby(by=['platform']).s
 print dict(data.loc[data.event_type=="Charged"][["id", "platform"]].drop_duplicates().groupby(by=['platform']).size())
 
 
-# In[9]:
+# In[16]:
 
-get_ipython().run_cell_magic(u'HTML', u'', u'<h3>\n<p>Where are all the unique users coming from and how many of them actually make a purchase on our website? From the data we noticed that for the time period of two days (from 10-01-2016 to 10-03-2016), the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.</p>\n</h3>')
+get_ipython().run_cell_magic(u'HTML', u'', u'<h3>\n<p>Where are all the unique users coming from and how many of them actually make a purchase on our website? We noticed from the data that for a time period of two days (from 10-01-2016 to 10-03-2016), the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.</p>\n</h3>')
 
 
 # In[52]:
@@ -131,9 +129,9 @@ category_df.loc[:, 'isveg'] = np.where(category_df['screenname'].str.contains('v
 category_df.head()
 
 
-# In[11]:
+# In[17]:
 
-get_ipython().run_cell_magic(u'HTML', u'', u'<h3>\n<p>Users often shift through food from different cuisines before making a final choice on what to purchase. Lets find out which cuisines are getting the most screen views. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).<p>\n</h3>')
+get_ipython().run_cell_magic(u'HTML', u'', u'<h3>\n<p>Users often browse through food from different cuisines before making a final choice on what to purchase. Lets find out which cuisines are getting the most screen views. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).<p>\n</h3>')
 
 
 # In[30]:

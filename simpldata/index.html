@@ -11748,13 +11748,13 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
 &lt;h1&gt;1. Abstract&lt;/h1&gt;
 &lt;h3&gt;
-&lt;p&gt;In this report, we&#39;ll be exploring app interaction data of a popular food delivery e-commerce platform and using it to answer some business questions.&lt;/p&gt;
+&lt;p&gt;In this report, we&#39;ll be exploring a dataset consisting of app interaction data from a popular online food delivery platform and using it to answer some business questions.&lt;/p&gt;
 &lt;/h3&gt;
 </pre></div>
 
@@ -11771,7 +11771,7 @@ div#notebook {
 <div class="output_html rendered_html output_subarea ">
 <h1>1. Abstract</h1>
 <h3>
-<p>In this report, we'll be exploring app interaction data of a popular food delivery e-commerce platform and using it to answer some business questions.</p>
+<p>In this report, we'll be exploring a dataset consisting of app interaction data from a popular online food delivery platform and using it to answer some business questions.</p>
 </h3>
 </div>
 
@@ -11783,7 +11783,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -11793,7 +11793,6 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 </pre></div>
@@ -11826,10 +11825,10 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#reading in all of the event data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/nandu/desktop/WORK/SIMPLDATA/test/data.csv&quot;</span><span class="p">)[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/data.csv&quot;</span><span class="p">)[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">])</span>
 
 <span class="c1">#reading in all of &#39;Screen Visited&#39; events&#39; data</span>
-<span class="n">svdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/nandu/desktop/WORK/SIMPLDATA/test/svdata.csv&quot;</span><span class="p">)[</span><span class="n">sv_cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">])</span>
+<span class="n">svdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/svdata.csv&quot;</span><span class="p">)[</span><span class="n">sv_cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">])</span>
 <span class="n">svdata</span> <span class="o">=</span> <span class="n">svdata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">svdata</span><span class="p">[</span><span class="s1">&#39;screenname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
 </pre></div>
 
@@ -11844,7 +11843,6 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#Lets first see what our data looks like.</span>
-
 <span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 <span class="k">print</span> <span class="n">svdata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12331,12 +12329,12 @@ AADAAKEZAAAAMEBoBgAAAAz8H1X+RBVsE/E2AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
 &lt;h3&gt;
-&lt;p&gt;Where are all the unique users coming from and how many of them actually make a purchase on our website? From the data we noticed that for the time period of two days (from 10-01-2016 to 10-03-2016), the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.&lt;/p&gt;
+&lt;p&gt;Where are all the unique users coming from and how many of them actually make a purchase on our website? We noticed from the data that for a time period of two days (from 10-01-2016 to 10-03-2016), the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.&lt;/p&gt;
 &lt;/h3&gt;
 </pre></div>
 
@@ -12352,7 +12350,7 @@ AADAAKEZAAAAMEBoBgAAAAz8H1X+RBVsE/E2AAAAAElFTkSuQmCC
 
 <div class="output_html rendered_html output_subarea ">
 <h3>
-<p>Where are all the unique users coming from and how many of them actually make a purchase on our website? From the data we noticed that for the time period of two days (from 10-01-2016 to 10-03-2016), the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.</p>
+<p>Where are all the unique users coming from and how many of them actually make a purchase on our website? We noticed from the data that for a time period of two days (from 10-01-2016 to 10-03-2016), the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.</p>
 </h3>
 </div>
 
@@ -14394,12 +14392,12 @@ iIiIiLRDRbOIiIiISDtUNIuIiIiItENFs4iIiIhIO/4PtaD7Or3oCXkAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
 &lt;h3&gt;
-&lt;p&gt;Users often shift through food from different cuisines before making a final choice on what to purchase. Lets find out which cuisines are getting the most screen views. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).&lt;p&gt;
+&lt;p&gt;Users often browse through food from different cuisines before making a final choice on what to purchase. Lets find out which cuisines are getting the most screen views. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).&lt;p&gt;
 &lt;/h3&gt;
 </pre></div>
 
@@ -14415,7 +14413,7 @@ iIiIiLRDRbOIiIiISDtUNIuIiIiItENFs4iIiIhIO/4PtaD7Or3oCXkAAAAASUVORK5CYII=
 
 <div class="output_html rendered_html output_subarea ">
 <h3>
-<p>Users often shift through food from different cuisines before making a final choice on what to purchase. Lets find out which cuisines are getting the most screen views. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).<p>
+<p>Users often browse through food from different cuisines before making a final choice on what to purchase. Lets find out which cuisines are getting the most screen views. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).<p>
 </h3>
 </div>
 
