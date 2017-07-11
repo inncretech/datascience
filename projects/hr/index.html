@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Human Resources Analytics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Inncretech</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>Human Resources Analytics</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by <a href="#">Inncretech</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="images/employees.jpg" alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">
+                  <h2>
+                      1. Abstract
+                  </h2>  
+                </p>
+                <p class="lead">
+                    In this HR analytics problem, we try to understand what causes the employees of a big company to leave prematurely, and come up with predictive models that predict which employees will leave next. With the help of actionable insights and accurate predictions, companies can take steps to ensure that their talent is happy and engaged and can rethink their retention strategies to keep employees from leaving.
+                </p>
+                <p class="lead">
+                    Based on our analysis, we found that the Random Forests model outperformed all the other models in terms of predictive accuracy and AUC score. It is a model that is built based on the technique of ensemble learning, where several base estimators are built independently and their predictions are averaged. This helps reduce the variance and improves the generalizability and robustness over a single estimator.
+                </p>
+                <p class="lead">
+                    Furthermore, we obtain an importance score for each of the features used in the classification process which will help in interpreting the model's results. In our case, the model gave a lot of weight to Satisfaction Level, Time Spent at the Company, and Number of Projects. These attributes are quite obvious and therefore we feel confident in the predictions of this model.
+                </p>
+
+                <br />
+
+                <p class="lead">
+                    <h2>
+                        2. What's in the data?
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    Lets first explore this dataset, which was obtained from Kaggle.
+
+                    In our dataset we have the records of approximately 15,000 employees with information on attributes such as “Satisfaction Level”, “Salary”, “Department”, and “Average Monthly Hours”, to name a few. The variable “left” is a binary variable that tells us if an employee has quit or is still working for the company, and is the variable that we’re interested in predicting. 
+                </p>
+
+                <img class="img-responsive" src="images/describe.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    On looking at high level stats of our dataset, we can see that the median satisfaction level is about 61% and on average employees work for up to 200 hours a month. We plot a simple bar graph to see how the employees are distributed across the different departments of the company. There are over 4000 employees belonging to the sales department and they constitute the majority in the workforce.
+                </p>
+
+                <img class="img-responsive" src="images/departments.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    <b>What are the average monthly hours for different salary groups?</b>
+
+                    Lets find out by comparing the employees who have left with those who haven't. From the plot below we can see that the mean average monthly hour is 200 hours and is almost consistent across all groups. Former employees with low and medium salaries seem to have put in slightly more hours a month than everyone else and former employees with high salaries worked slightly less hours.
+                </p>
+
+                <img class="img-responsive" src="images/amh_salary.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    <b>What scores do employees get on their performance reviews?</b>
+
+                    Is it the same across the different salary groups? The plot below answers these questions for us. We can see that the employees of different salary groups who've stayed have similar average performance scores and they're all well above 70%. Its interesting to note that the Low and Medium salaried employees who've left held an average performance score above 70%, but the scores of High salaried employees fall well below 70%.
+                </p>
+
+                <img class="img-responsive" src="images/eval_salary.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    <b>We wish to find out if satisfaction level plays a role in employees leaving their companies.</b>
+                    Let’s find out what the distribution looks like in this dataset. It appears that the employees who left reported lower average satisfaction levels, ranging from a little over 0.37 to 0.46. Employees who stayed reported relatively higher satisfaction levels. From this observation we can say that job satisfaction level plays an important role in deciding the future of a person in a company.
+                </p>
+
+                <img class="img-responsive" src="images/satis_salary.png" alt="">
+
+                <br />
+
+
+                <p class="lead">
+                    <b>Does the satisfaction level of the employees depend on how many projects they've been assigned to in a year?</b>
+                    As it turns out, it does. It appears that the people who are most satisfied with their jobs are assigned around 2 to 4 projects a year, and this satisfaction level is almost consistent across different salary groups. Employees who are assigned to just 1 or even more than 4 projects have relatively lower satisfaction levels.
+                </p>
+
+                <img class="img-responsive" src="images/satis_projects.png" alt="">
+
+                <br />
+                <br />
+
+                <p class="lead">
+                    <h2>
+                        3. Predictive modelling
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    In this section we'll develop supervised classification models that will predict whether a given employee will or won't leave the company. We'll use four different classification algorithms to develop the models and find out which one performs the best.
+                </p>
+                <p class="lead">
+                    The plot below shows us how the class label "left" is distributed. We see that the vast majority of data points belong to class 0, the label which represents the employees who have not left the company. The remaining belong to class 1, the label which indicates that they have left.
+                </p>
+                <img class="img-responsive" src="images/class.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    Since the dataset is imbalanced and skewed towards class 0, we'll use stratified sampling to construct our training and test data sets. Stratified sampling ensures that the percentage of both the classes remains consistent across the training and test sets.
+                </p>
+
+                <hr>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Inncretech</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

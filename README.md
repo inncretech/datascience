@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+# [Start Bootstrap](http://startbootstrap.com/) - [3 Col Portfolio](http://startbootstrap.com/template-overviews/3-col-portfolio/)
 
-You can use the [editor on GitHub](https://github.com/abhisesh/abhisesh.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+[3 Col Portfolio](http://startbootstrap.com/template-overviews/3-col-portfolio/) is a three column portfolio template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Getting Started
 
-### Markdown
+To begin using this template, choose one of the following options to get started:
+* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/3-col-portfolio/)
+* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-3-col-portfolio.git`
+* Fork the repo
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Bugs and Issues
 
-```markdown
-Syntax highlighted code block
+Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-3-col-portfolio/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/3-col-portfolio/).
 
-# Header 1
-## Header 2
-### Header 3
+## Creator
 
-- Bulleted
-- List
+Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
 
-1. Numbered
-2. List
+* https://twitter.com/davidmillerskt
+* https://github.com/davidtmiller
 
-**Bold** and _Italic_ and `Code` text
+Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-[Link](url) and ![Image](src)
-```
+## Copyright and License
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/abhisesh/abhisesh.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-3-col-portfolio/blob/gh-pages/LICENSE) license.
