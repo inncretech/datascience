@@ -32,9 +32,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Inncretech</a>
+                <a  href="http://inncretech.com/">
+                    <img class="img-responsive" src="images/logo.png" alt="">
+                </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
@@ -48,6 +51,7 @@
                     </li>
                 </ul>
             </div>
+            -->
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -86,17 +90,11 @@
                 <!-- Post Content -->
                 <p class="lead">
                   <h2>
-                      1. Abstract
+                      1. Introduction
                   </h2>  
                 </p>
                 <p class="lead">
                     In this HR analytics problem, we try to understand what causes the employees of a big company to leave prematurely, and come up with predictive models that predict which employees will leave next. With the help of actionable insights and accurate predictions, companies can take steps to ensure that their talent is happy and engaged and can rethink their retention strategies to keep employees from leaving.
-                </p>
-                <p class="lead">
-                    Based on our analysis, we found that the Random Forests model outperformed all the other models in terms of predictive accuracy and AUC score. It is a model that is built based on the technique of ensemble learning, where several base estimators are built independently and their predictions are averaged. This helps reduce the variance and improves the generalizability and robustness over a single estimator.
-                </p>
-                <p class="lead">
-                    Furthermore, we obtain an importance score for each of the features used in the classification process which will help in interpreting the model's results. In our case, the model gave a lot of weight to Satisfaction Level, Time Spent at the Company, and Number of Projects. These attributes are quite obvious and therefore we feel confident in the predictions of this model.
                 </p>
 
                 <br />
@@ -108,7 +106,7 @@
                 </p>
 
                 <p class="lead">
-                    Lets first explore this dataset, which was obtained from Kaggle.
+                    Lets first explore this dataset, which was obtained from <a href="https://www.kaggle.com/ludobenistant/hr-analytics">Kaggle</a>.
 
                     In our dataset we have the records of approximately 15,000 employees with information on attributes such as “Satisfaction Level”, “Salary”, “Department”, and “Average Monthly Hours”, to name a few. The variable “left” is a binary variable that tells us if an employee has quit or is still working for the company, and is the variable that we’re interested in predicting. 
                 </p>
@@ -172,7 +170,7 @@
                 </p>
 
                 <p class="lead">
-                    In this section we'll develop supervised classification models that will predict whether a given employee will or won't leave the company. We'll use four different classification algorithms to develop the models and find out which one performs the best.
+                    Using python's scikit-learn library, we developed supervised classification models in four different algorithms to predict whether a given employee will or won't leave the company.
                 </p>
                 <p class="lead">
                     The plot below shows us how the class label "left" is distributed. We see that the vast majority of data points belong to class 0, the label which represents the employees who have not left the company. The remaining belong to class 1, the label which indicates that they have left.
@@ -182,10 +180,65 @@
                 <br />
 
                 <p class="lead">
-                    Since the dataset is imbalanced and skewed towards class 0, we'll use stratified sampling to construct our training and test data sets. Stratified sampling ensures that the percentage of both the classes remains consistent across the training and test sets.
+                    Since the dataset is imbalanced and skewed towards class 0, we used stratified sampling to construct our training and test data sets. Stratified sampling ensures that the percentage of both the classes remains consistent across the training and test sets.
                 </p>
 
-                <hr>
+
+                <p class="lead">
+                     We began by applying the Random Forests algorithm, which works by building several decision trees and averaging their results. Apart from being highly interpretable, Decision Tree based modelling techniques also help us in understanding how important the features of a dataset are. 
+                </p>
+
+                <p class="lead">
+                     Our Random Forests model reported that the feature "satisfaction_level" plays the most important role in determining the class of a tuple. The importance of a feature is computed as the (normalized) total reduction of the criterion brought by that feature. It is also known as the Gini importance. The processing times and accuracy scores are shown below.
+                </p>
+
+                <img class="img-responsive" src="images/rf1.png" alt="">
+                <br />
+
+                <p class="lead">
+                    In the plot below we see several features that are of really low importance. We dropped the features with relatively lower scores, generated new train/test sets, and retrained the RF model to see if there were any changes in the accuracy. 
+                </p>
+
+                <img class="img-responsive" src="images/importance1.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    We can see that the importance scores of the features in the reduced dataset haven't changed much.
+                </p>
+                <img class="img-responsive" src="images/importance.png" alt="">
+
+                <p class="lead">
+                     We can see that reducing the number of features hasn't affected the overall scores. Although the model takes quite a while to train, it produces pretty impressive class precision and recall scores.
+                </p>
+
+                <img class="img-responsive" src="images/rf2.png" alt="">
+                <br />
+
+                <p class="lead">
+                    Lets take a look at what the ROC curve looks like for our Random Forests model. The ROC curve is a plot of the False Positive Rate vs the True Positive Rate of a binary classifier. AUC, which stands for Area Under the Curve, tells us what the value of the area under the curve is. The closer AUC is to 1.0, the better our model is at performing classifications.
+                </p>
+                <img class="img-responsive" src="images/roc_rf.png" alt="">
+                <br />
+
+                <p class="lead">
+                    With the dataset consisting of reduced number of features, we developed prediction models using SVM, K Nearest Neighbors, and a standard Decision Tree. Lets visualise the ROC curves of all our models together to find out which one performed the best. From the plot below we can see that all the models performed well, but the Random Forests model performed the best, with an AUC score of 0.98.
+                </p>
+                <img class="img-responsive" src="images/roc_all.png" alt="">
+                <br />
+
+                <p class="lead">
+                  <h2>
+                      4. Conclusion
+                  </h2>  
+                </p>
+                <p class="lead">
+                    Based on our analysis, we report that the Random Forests model outperformed all the other models in terms of predictive accuracy and AUC score. It is a model that is built based on the technique of ensemble learning, where several base estimators are built independently and their predictions are averaged. This helps reduce the variance and improves the generalizability and robustness over a single estimator.
+                </p>
+                <p class="lead">
+                    Furthermore, we obtain an importance score for each of the features used in the classification process which will help in interpreting the model's results. In our case, the model gave a lot of weight to Satisfaction Level, Time Spent at the Company, and Number of Projects. These attributes are quite obvious and therefore we feel confident in the predictions of this model.
+                </p>
+                
 
             </div>
 
