@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>An Analysis of App Usage Data</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a  href="http://inncretech.com/">
+                    <img class="img-responsive" src="images/logo.png" alt="">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            -->
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>An Analysis of App Usage Data</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by <a href="#">Inncretech</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time
+                <p><span class="glyphicon glyphicon-time"></span> Posted on </p>
+                <hr>
+                -->
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="images/mobile.png" alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">
+                  <h2>
+                      1. Introduction
+                  </h2>  
+                </p>
+                <p class="lead">
+                    In this post, we analyze event data about users’ journey to different app screens and finally, buying/checking out a product. The data was obtained from the events repository of a marketing analytics company which offers an sdk for app developers to generate events from iOS, Android and Web. Based on the time series of events for each user, we are able to identify the number of screens and most common paths that the users are taking before purchasing a product. We analyzed what the best selling products were, which screens lead to most users dropping off of the app, and present our findings and recommendations below.
+                </p>
+
+                <br />
+
+                <p class="lead">
+                    <h2>
+                        2. Visualizing a typical event path
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    We assumed a typical path a user would have to follow in order to place an order, and analyzed app interaction data for two days (from 10-01-2016 to 10-03-2016) to find the nodes where our users drop off the most. We can see that only 4.3% of the users who launched the app (40253) went on to look at the “Today’s Menu” (1746), and only 0.7% of the users who launched the app went on to successfully place an order.
+                </p>
+
+                <img class="img-responsive" src="images/1.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    <h2>
+                        3. Number of records per event type
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    “Screen Visited” seems to be the most frequently occurring event on our app, followed by the event “Menu Category Changed”. We can also observe that over the course of two days less than 15000 transactions have occurred (the event “Charged” has a frequency of 14,417).
+                </p>
+
+                <img class="img-responsive" src="images/2.png" alt="">
+
+                <br /> 
+
+                <p class="lead">
+                    <h2>
+                        4. Visualizing the popularity of food categories
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    Users often shift through food from different cuisines before making a final choice on what to purchase. Over here, we observe that Continental with a count of 5620, is the food category with the highest number of user views. Latin-American dishes were the least popular (with a view count of only 1).
+                </p>
+
+                <img class="img-responsive" src="images/3.png" alt="">
+
+                <br />                    
+
+
+                <p class="lead">
+                    <h2>
+                        5. Vegetarian & Non Vegetarian food
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    Pan-Asian seems to be the most popular choice among people who’re interested in vegetarian food. And for non-veg eaters, the most popular is Continental.
+                </p>
+
+                <img class="img-responsive" src="images/4.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                    <h2>
+                        6. Product Views by Category
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    Over here we drill down to the product level for two of the most popular categories, continental and pan-asian.  We can observe that number of continental food items that are viewed far exceed the number of pan-asian food items. 
+                </p>
+
+                <img class="img-responsive" src="images/5.png" alt="">
+
+                <br />
+
+                <img class="img-responsive" src="images/6.png" alt="">
+
+                <p class="lead">
+                    <h2>
+                        7. At what point does a user stop using the app?
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    We analyzed user sessions to identify the events/screens after which a user stops using the app (i.e. terminal event). The event “Menu Category Changed” seems to be the terminal event with the highest frequency (21899).
+                </p>
+
+                <img class="img-responsive" src="images/7.png" alt="">
+
+                <br />
+
+
+                <p class="lead">
+                    <h2>
+                        8. Platform Activity
+                    </h2>
+                </p>
+
+                <p class="lead">
+                    For the time period of two days (from 10-01-2016 to 10-03-2016), we noticed that the vast majority of unique users (53,196) accessed the app on Web. Of these users, 4940 users had placed orders and were charged. The second most popular platform is Android, with a unique active user count of 30,884, of which 4001 users were charged for their orders.
+                </p>
+
+                <img class="img-responsive" src="images/8.png" alt="">
+
+                <br />
+
+                <p class="lead">
+                  <h2>
+                      9. Recommendations
+                  </h2>  
+                </p>
+                <p class="lead">
+                    We see that several users close the app while making a decision as they switch between different menu categories. When a user is switching between categories more than once, they could be notified about a product which is the best seller, meal of the day, what similar users are ordering or a discount in order to help the user make an impulse decision, which could help increase the conversion rate.
+                </p>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Inncretech</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
