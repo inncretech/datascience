@@ -11746,85 +11746,31 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-
-&lt;h1&gt;1. Abstract&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h3&gt;
-    &lt;p&gt;In this HR analytics problem, we try to understand what causes the employees of a big company to leave prematurely, and come up with predictive models that predict which employees will leave next.  With the help of actionable insights and accurate predictions, companies can take steps to ensure that their talent is happy and engaged and can rethink their retention strategies to keep employees from leaving.&lt;/p&gt;
-&lt;/h3&gt;
-
-&lt;h3&gt;
-    &lt;p&gt;Based on our analysis, we found that the Random Forests model outperformed all the other models in terms of predictive accuracy and AUC score. It is a model that is built based on the technique of ensemble learning, where several base estimators are built independently and their predictions are averaged. This helps reduce the variance and improves the generalizability and robustness over a single estimator. Furthermore, we obtain an importance score for each of the features used in the classification process which will help in interpreting the model&#39;s results. In our case, the model gave a lot of weight to Satisfaction Level, Time Spent at the Company, and Number of Projects. These attributes are quite obvious and therefore we feel confident in the predictions of this model.
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-
-<h1>1. Abstract</h1>
-<hr>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1>1. Abstract</h1></p>
+<p><hr></p>
 <h3>
     <p>In this HR analytics problem, we try to understand what causes the employees of a big company to leave prematurely, and come up with predictive models that predict which employees will leave next.  With the help of actionable insights and accurate predictions, companies can take steps to ensure that their talent is happy and engaged and can rethink their retention strategies to keep employees from leaving.</p>
-</h3>
-
-<h3>
+</h3><h3>
     <p>Based on our analysis, we found that the Random Forests model outperformed all the other models in terms of predictive accuracy and AUC score. It is a model that is built based on the technique of ensemble learning, where several base estimators are built independently and their predictions are averaged. This helps reduce the variance and improves the generalizability and robustness over a single estimator. Furthermore, we obtain an importance score for each of the features used in the classification process which will help in interpreting the model's results. In our case, the model gave a lot of weight to Satisfaction Level, Time Spent at the Company, and Number of Projects. These attributes are quite obvious and therefore we feel confident in the predictions of this model.
 </h3>
 </div>
-
-</div>
-
 </div>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;We&#39;ll start by loading in all the required packages and defining a few helper functions that we&#39;ll use later on while performing machine learning.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>We'll start by loading in all the required packages and defining a few helper functions that we'll use later on while performing machine learning.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -11973,48 +11919,20 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[102]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-
-&lt;h1&gt;2. Data Exploration&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h3&gt;
-    &lt;p&gt;Lets first explore this dataset, which was obtained from &lt;a href=&quot;https://www.kaggle.com/ludobenistant/hr-analytics&quot;&gt;Kaggle.&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;In our dataset we have the records of approximately 15,000 employees with information on attributes such as “Satisfaction Level”, “Salary”, “Department”, and “Average Monthly Hours”, to name a few. The target variable is “Sales”, a binary variable that tells us if an employee has quit or is still working for the company.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-
-<h1>2. Data Exploration</h1>
-<hr>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1>2. Data Exploration</h1></p>
+<p><hr></p>
 <h3>
     <p>Lets first explore this dataset, which was obtained from <a href="https://www.kaggle.com/ludobenistant/hr-analytics">Kaggle.</a></p>
 
     <p>In our dataset we have the records of approximately 15,000 employees with information on attributes such as “Satisfaction Level”, “Salary”, “Department”, and “Average Monthly Hours”, to name a few. The target variable is “Sales”, a binary variable that tells us if an employee has quit or is still working for the company.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12064,40 +11982,17 @@ None
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Lets get a quick look at some high level stats about our dataset.&lt;/p&gt; 
-    &lt;p&gt;We can see that the median satisfaction level is about 61% and on average employees work for upto 200 hours a month.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Lets get a quick look at some high level stats about our dataset.</p> 
     <p>We can see that the median satisfaction level is about 61% and on average employees work for upto 200 hours a month.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12233,40 +12128,17 @@ None
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;The column “sales” represents the department to which the employees belong.&lt;/p&gt;
-    &lt;p&gt;Lets go ahead and change the column name to something more intuitive, and find out how many departments are there.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>The column “sales” represents the department to which the employees belong.</p>
     <p>Lets go ahead and change the column name to something more intuitive, and find out how many departments are there.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12311,38 +12183,16 @@ None
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;We can see that there are over 4000 employees belonging to the sales department and they constitute the majority in the workforce.
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>We can see that there are over 4000 employees belonging to the sales department and they constitute the majority in the workforce.
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12746,42 +12596,18 @@ TkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;What are the average monthly hours for different salary groups? Lets find out by comparing the employees who have left with those who haven&#39;t.&lt;/p&gt;
-    &lt;p&gt;From the plot below we can see that the mean average monthly hour is 200 hours and is almost consistent across all groups.&lt;/p&gt;
-    &lt;p&gt;Former employees with low and medium salaries seem to have put in slightly more hours a month than everyone else and former employees with high salaries worked slightly less hours.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>What are the average monthly hours for different salary groups? Lets find out by comparing the employees who have left with those who haven't.</p>
     <p>From the plot below we can see that the mean average monthly hour is 200 hours and is almost consistent across all groups.</p>
     <p>Former employees with low and medium salaries seem to have put in slightly more hours a month than everyone else and former employees with high salaries worked slightly less hours.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13106,42 +12932,18 @@ PAAAABHxAAAARMQDAAAQeQCc0NcIVuJbLgAAAABJRU5ErkJggg==
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;What scores do employees get on their performance reviews? Is it the same across the different salary groups?&lt;/p&gt;
-    &lt;p&gt;The plot below answers these questions for us. We can see that the employees of different salary groups who&#39;ve stayed have similar average performance scores and they&#39;re all well above 70%.&lt;/p&gt;
-    &lt;p&gt;Its interesting to note that the Low and Medium salaried employees who&#39;ve left held an average performance score above 70%, but the scores of High salaried employees fall well below 70%.&lt;/p&gt; 
-&lt;h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>What scores do employees get on their performance reviews? Is it the same across the different salary groups?</p>
     <p>The plot below answers these questions for us. We can see that the employees of different salary groups who've stayed have similar average performance scores and they're all well above 70%.</p>
     <p>Its interesting to note that the Low and Medium salaried employees who've left held an average performance score above 70%, but the scores of High salaried employees fall well below 70%.</p> 
-<h3>
-</div>
-
-</div>
-
+</h3>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13528,40 +13330,17 @@ TkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;We wish to find out if satisfaction levels play a role in employees leaving their companies. Lets find out what the distribution looks like in this dataset.&lt;/p&gt;
-    &lt;p&gt;It appears that the employees who have left have lower average satisfaction levels, ranging from a little over 0.37 to 0.46. Employees who stayed possess relatively higher satisfaction levels.&lt;/p&gt;
-&lt;h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>We wish to find out if satisfaction levels play a role in employees leaving their companies. Lets find out what the distribution looks like in this dataset.</p>
     <p>It appears that the employees who have left have lower average satisfaction levels, ranging from a little over 0.37 to 0.46. Employees who stayed possess relatively higher satisfaction levels.</p>
-<h3>
-</div>
-
-</div>
-
+</h3>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13950,31 +13729,11 @@ j0hzBgAAAABJRU5ErkJggg==
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Does the satisfaction level of the employees depend on how many projects they&#39;ve been assigned to in a year?
-    As it turns out, it does.&lt;/p&gt; 
-    &lt;p&gt;It appears that the people who are most satisfied with their jobs are assigned around 2 to 4 projects a year, and this satisfaction level is almost consistent across different salary groups. 
-    Employees who are assigned to just 1 or even more than 4 projects have relatively lower satisfaction levels.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Does the satisfaction level of the employees depend on how many projects they've been assigned to in a year?
     As it turns out, it does.</p> 
@@ -13982,12 +13741,7 @@ j0hzBgAAAABJRU5ErkJggg==
     Employees who are assigned to just 1 or even more than 4 projects have relatively lower satisfaction levels.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -14757,34 +14511,12 @@ hqH5BAAAAAAAAMP8P9+L/qxnv3TVAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h1&gt;3. Predictive Modelling&lt;/h1&gt;
-&lt;hr&gt;
-
-&lt;h3&gt;
-    &lt;p&gt;In this section we&#39;ll develop supervised classification models that will predict whether a given employee will or won&#39;t leave the company.&lt;/p&gt;
-    &lt;p&gt;Before we go on to develop those models, we&#39;ll have to do a bit of data preprocessing.&lt;/p&gt;
-    &lt;p&gt;The columns &quot;salary&quot; and &quot;department&quot; are both categorical and will need to be encoded as binary variables. We perform One Hot Encoding to obtain their binary representations.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-<h1>3. Predictive Modelling</h1>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1>3. Predictive Modelling</h1></p>
 <hr>
 
 <h3>
@@ -14793,12 +14525,7 @@ hqH5BAAAAAAAAMP8P9+L/qxnv3TVAAAAAElFTkSuQmCC
     <p>The columns "salary" and "department" are both categorical and will need to be encoded as binary variables. We perform One Hot Encoding to obtain their binary representations.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -14902,40 +14629,17 @@ None
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;The plot below shows us how the class label &quot;left&quot; is distributed. We see that the vast majority of data points belong to class 0, the label which represents the employees who have not left the company.&lt;/p&gt;
-    &lt;p&gt;The remaining belong to class 1, the label which indicates that they have left.&lt;/p&gt;
-&lt;h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>The plot below shows us how the class label "left" is distributed. We see that the vast majority of data points belong to class 0, the label which represents the employees who have not left the company.</p>
     <p>The remaining belong to class 1, the label which indicates that they have left.</p>
-<h3>
-</div>
-
-</div>
-
+</h3>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -15181,40 +14885,17 @@ AAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Since the dataset is imbalanced and skewed towards class 0, we&#39;ll use stratified sampling to construct our training and test data sets.&lt;/p&gt;
-    &lt;p&gt;Stratified sampling ensures that the percentage of both the classes remains consistent across the training and test sets.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Since the dataset is imbalanced and skewed towards class 0, we'll use stratified sampling to construct our training and test data sets.</p>
     <p>Stratified sampling ensures that the percentage of both the classes remains consistent across the training and test sets.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -15251,42 +14932,18 @@ AAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;We&#39;ll use four different classification algorithms to develop the predictive models and find out which one performs the best.&lt;/p&gt;
-    &lt;p&gt;Lets start with the Random Forests algorithm, which works by building several decision trees and averaging their results.&lt;/p&gt;
-    &lt;p&gt;Apart from being highly interpretable, Decision Tree based modelling techniques also help us in understanding how important the features of a dataset are.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>We'll use four different classification algorithms to develop the predictive models and find out which one performs the best.</p>
     <p>Lets start with the Random Forests algorithm, which works by building several decision trees and averaging their results.</p>
     <p>Apart from being highly interpretable, Decision Tree based modelling techniques also help us in understanding how important the features of a dataset are.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -16029,40 +15686,17 @@ Xjt4AAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Our Random Forests model tells us that the feature &quot;satisfaction_level&quot; plays the most important role in determining the class of a tuple.&lt;/p&gt;
-    &lt;p&gt;The processing times and accuracy scores are shown below.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Our Random Forests model tells us that the feature "satisfaction_level" plays the most important role in determining the class of a tuple.</p>
     <p>The processing times and accuracy scores are shown below.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -16125,38 +15759,16 @@ avg / total       0.99      0.99      0.99      4500
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Lets drop the features with relatively lower scores, generate new train/test sets,and retrain the RF model to see if there are any changes in the accuracy.&lt;/p&gt;
-&lt;h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Lets drop the features with relatively lower scores, generate new train/test sets,and retrain the RF model to see if there are any changes in the accuracy.</p>
-<h3>
-</div>
-
-</div>
-
+</h3>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -16677,44 +16289,19 @@ avg / total       0.99      0.99      0.99      4500
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Lets take a look at what the ROC curve looks like for our Random Forests model.&lt;/p&gt;
-    &lt;p&gt;The ROC curve is a plot of the False Positive Rate vs the True Positive Rate of a binary classifier.&lt;/p&gt;
-    &lt;p&gt;AUC, which stands for Area Under the Curve, tells us what the value of the area under the curve is.&lt;/p&gt; 
-    &lt;p&gt;The closer AUC is to 1.0, the better our model is at performing classifications.&lt;/p&gt;
-&lt;h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Lets take a look at what the ROC curve looks like for our Random Forests model.</p>
     <p>The ROC curve is a plot of the False Positive Rate vs the True Positive Rate of a binary classifier.</p>
     <p>AUC, which stands for Area Under the Curve, tells us what the value of the area under the curve is.</p> 
     <p>The closer AUC is to 1.0, the better our model is at performing classifications.</p>
-<h3>
-</div>
-
-</div>
-
+</h3>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -17295,38 +16882,16 @@ RU5ErkJggg==
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Validation curves help us visualize how the performance of our model during training and testing varies with changes in its hyperparameter values.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Validation curves help us visualize how the performance of our model during training and testing varies with changes in its hyperparameter values.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -17775,38 +17340,16 @@ PKIXAAAAxvs/eT2ysNiSS+cAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Learning curves help us visualize how the performance of our model during training and testing varies with changes in the training set size.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Learning curves help us visualize how the performance of our model during training and testing varies with changes in the training set size.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -18238,38 +17781,16 @@ D16ay8fisLTeAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;We&#39;ll now develop prediction models using SVM, K Nearest Neighbors, and a standard Decision Tree, and also generate ROC, learning and validation curves for each of the models to find out how they perform.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>We'll now develop prediction models using SVM, K Nearest Neighbors, and a standard Decision Tree, and also generate ROC, learning and validation curves for each of the models to find out how they perform.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -61218,40 +60739,17 @@ AAAAAAAAAMCt/T/FGBHq+uKvdwAAAABJRU5ErkJggg==
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">HTML</span>
-&lt;h3&gt;
-    &lt;p&gt;Lets visualise the ROC curves of all our models together to find out which one performed the best.&lt;p&gt;
-    &lt;p&gt;We can see that all the models performed well, but the Random Forests model performed the best, with an AUC score of 0.98.&lt;/p&gt;
-&lt;/h3&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3>
     <p>Lets visualise the ROC curves of all our models together to find out which one performed the best.<p>
     <p>We can see that all the models performed well, but the Random Forests model performed the best, with an AUC score of 0.98.</p>
 </h3>
 </div>
-
 </div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
